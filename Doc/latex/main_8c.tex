@@ -1,0 +1,187 @@
+\hypertarget{main_8c}{}\doxysection{main.\+c File Reference}
+\label{main_8c}\index{main.c@{main.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$gd.\+h$>$}\newline
+{\ttfamily \#include $<$gdfontt.\+h$>$}\newline
+{\ttfamily \#include $<$gdfontl.\+h$>$}\newline
+{\ttfamily \#include $<$gdfontg.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_datalist}{Datalist}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{struct_datalist}{Datalist}} \mbox{\hyperlink{main_8c_a0bdb17557d68bce046745a2a65c489ad}{Datalist}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_datalist}{Datalist}} $\ast$ \mbox{\hyperlink{main_8c_ac760a48f4ce747a253c8c3dadf05171a}{Init}} (int percent, char $\ast$data)
+\begin{DoxyCompactList}\small\item\em Init. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8c_ade6f68022835b4e558111489ba4dd8ef}{Add}} (\mbox{\hyperlink{struct_datalist}{Datalist}} $\ast$list, int percent, char $\ast$data)
+\begin{DoxyCompactList}\small\item\em Add. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_datalist}{Datalist}} $\ast$ \mbox{\hyperlink{main_8c_af6b0c14e2bc54c2bbbdba33e509b8e65}{Compile\+Argument}} (char $\ast$$\ast$args)
+\begin{DoxyCompactList}\small\item\em Compile\+Argument. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{main_8c_a32c04740d40089c55e0617f4a08b03dd}{Last\+Index}} (\mbox{\hyperlink{struct_datalist}{Datalist}} $\ast$list)
+\begin{DoxyCompactList}\small\item\em Last\+Index. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_datalist}{Datalist}} $\ast$ \mbox{\hyperlink{main_8c_a61e5e510e3001dfbf1fa05c1baef4462}{Get\+Member}} (\mbox{\hyperlink{struct_datalist}{Datalist}} $\ast$list, int i)
+\begin{DoxyCompactList}\small\item\em Get\+Member. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8c_a894591905657627a44a66021a4434624}{Make\+Pie\+Chart}} (gd\+Image\+Ptr im, gd\+Font\+Ptr f, \mbox{\hyperlink{struct_datalist}{Datalist}} $\ast$data, int colors\mbox{[}$\,$\mbox{]}, int center, int radius)
+\begin{DoxyCompactList}\small\item\em Make\+Pie\+Chart. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{main_8c_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{main_8c_a2d886d8443ccfb900dca326ed9ba5dad}{num\+Args}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{main_8c_a0bdb17557d68bce046745a2a65c489ad}\label{main_8c_a0bdb17557d68bce046745a2a65c489ad}} 
+\index{main.c@{main.c}!Datalist@{Datalist}}
+\index{Datalist@{Datalist}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{Datalist}{Datalist}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{struct_datalist}{Datalist}} \mbox{\hyperlink{struct_datalist}{Datalist}}}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{main_8c_ade6f68022835b4e558111489ba4dd8ef}\label{main_8c_ade6f68022835b4e558111489ba4dd8ef}} 
+\index{main.c@{main.c}!Add@{Add}}
+\index{Add@{Add}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{Add()}{Add()}}
+{\footnotesize\ttfamily void Add (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_datalist}{Datalist}} $\ast$}]{list,  }\item[{int}]{percent,  }\item[{char $\ast$}]{data }\end{DoxyParamCaption})}
+
+
+
+Add. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & \\
+\hline
+{\em percent} & \\
+\hline
+{\em data} & add a new member to the list in parameter \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{main_8c_af6b0c14e2bc54c2bbbdba33e509b8e65}\label{main_8c_af6b0c14e2bc54c2bbbdba33e509b8e65}} 
+\index{main.c@{main.c}!CompileArgument@{CompileArgument}}
+\index{CompileArgument@{CompileArgument}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{CompileArgument()}{CompileArgument()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_datalist}{Datalist}} $\ast$ Compile\+Argument (\begin{DoxyParamCaption}\item[{char $\ast$$\ast$}]{args }\end{DoxyParamCaption})}
+
+
+
+Compile\+Argument. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Get the arguments passed in the terminal if there isn\textquotesingle{}t enough data prepare a list with a placeholder pie chart with 25\% charts and placeholder labels 
+\end{DoxyReturn}
+\mbox{\Hypertarget{main_8c_a61e5e510e3001dfbf1fa05c1baef4462}\label{main_8c_a61e5e510e3001dfbf1fa05c1baef4462}} 
+\index{main.c@{main.c}!GetMember@{GetMember}}
+\index{GetMember@{GetMember}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{GetMember()}{GetMember()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_datalist}{Datalist}} $\ast$ Get\+Member (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_datalist}{Datalist}} $\ast$}]{list,  }\item[{int}]{i }\end{DoxyParamCaption})}
+
+
+
+Get\+Member. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & \\
+\hline
+{\em i} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+get a specific member of the list to draw the pie chart 
+\end{DoxyReturn}
+\mbox{\Hypertarget{main_8c_ac760a48f4ce747a253c8c3dadf05171a}\label{main_8c_ac760a48f4ce747a253c8c3dadf05171a}} 
+\index{main.c@{main.c}!Init@{Init}}
+\index{Init@{Init}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_datalist}{Datalist}} $\ast$ Init (\begin{DoxyParamCaption}\item[{int}]{percent,  }\item[{char $\ast$}]{data }\end{DoxyParamCaption})}
+
+
+
+Init. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em percent} & \\
+\hline
+{\em data} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+list of member set up a list with the percentage and the label for the pie chart 
+\end{DoxyReturn}
+\mbox{\Hypertarget{main_8c_a32c04740d40089c55e0617f4a08b03dd}\label{main_8c_a32c04740d40089c55e0617f4a08b03dd}} 
+\index{main.c@{main.c}!LastIndex@{LastIndex}}
+\index{LastIndex@{LastIndex}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{LastIndex()}{LastIndex()}}
+{\footnotesize\ttfamily int Last\+Index (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_datalist}{Datalist}} $\ast$}]{list }\end{DoxyParamCaption})}
+
+
+
+Last\+Index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Get the last item in the list is used to determine how many section the pie chat has 
+\end{DoxyReturn}
+\mbox{\Hypertarget{main_8c_a0ddf1224851353fc92bfbff6f499fa97}\label{main_8c_a0ddf1224851353fc92bfbff6f499fa97}} 
+\index{main.c@{main.c}!main@{main}}
+\index{main@{main}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{main_8c_a894591905657627a44a66021a4434624}\label{main_8c_a894591905657627a44a66021a4434624}} 
+\index{main.c@{main.c}!MakePieChart@{MakePieChart}}
+\index{MakePieChart@{MakePieChart}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{MakePieChart()}{MakePieChart()}}
+{\footnotesize\ttfamily void Make\+Pie\+Chart (\begin{DoxyParamCaption}\item[{gd\+Image\+Ptr}]{im,  }\item[{gd\+Font\+Ptr}]{f,  }\item[{\mbox{\hyperlink{struct_datalist}{Datalist}} $\ast$}]{data,  }\item[{int}]{colors\mbox{[}$\,$\mbox{]},  }\item[{int}]{center,  }\item[{int}]{radius }\end{DoxyParamCaption})}
+
+
+
+Make\+Pie\+Chart. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em im} & \\
+\hline
+{\em f} & \\
+\hline
+{\em data} & \\
+\hline
+{\em colors} & \\
+\hline
+{\em center} & \\
+\hline
+{\em radius} & Draw the pie chart using the data given by the arguments in the program \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{main_8c_a2d886d8443ccfb900dca326ed9ba5dad}\label{main_8c_a2d886d8443ccfb900dca326ed9ba5dad}} 
+\index{main.c@{main.c}!numArgs@{numArgs}}
+\index{numArgs@{numArgs}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{numArgs}{numArgs}}
+{\footnotesize\ttfamily int num\+Args}
+
