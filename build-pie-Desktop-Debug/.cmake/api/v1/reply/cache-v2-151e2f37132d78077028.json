@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/acerisey/build-pie-Desktop-Debug"
+			"value" : "/home/acerisey/ajcPie/build-pie-Desktop-Debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -431,7 +431,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/acerisey/build-pie-Desktop-Debug/CMakeFiles/pkgRedirects"
+			"value" : "/home/acerisey/ajcPie/build-pie-Desktop-Debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -1075,7 +1075,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/acerisey/build-pie-Desktop-Debug"
+			"value" : "/home/acerisey/ajcPie/build-pie-Desktop-Debug"
 		},
 		{
 			"name" : "pie_IS_TOP_LEVEL",

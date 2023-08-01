@@ -16,7 +16,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "/home/acerisey/build-pie-Desktop-Debug/CMakeFiles/3.25.1/CMakeSystem.cmake"
+			"path" : "/home/acerisey/ajcPie/build-pie-Desktop-Debug/CMakeFiles/3.25.1/CMakeSystem.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -275,7 +275,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "/home/acerisey/build-pie-Desktop-Debug/CMakeFiles/3.25.1/CMakeCCompiler.cmake"
+			"path" : "/home/acerisey/ajcPie/build-pie-Desktop-Debug/CMakeFiles/3.25.1/CMakeCCompiler.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -399,13 +399,13 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "/home/acerisey/build-pie-Desktop-Debug/CMakeFiles/3.25.1/CMakeCCompiler.cmake"
+			"path" : "/home/acerisey/ajcPie/build-pie-Desktop-Debug/CMakeFiles/3.25.1/CMakeCCompiler.cmake"
 		}
 	],
 	"kind" : "cmakeFiles",
 	"paths" : 
 	{
-		"build" : "/home/acerisey/build-pie-Desktop-Debug",
+		"build" : "/home/acerisey/ajcPie/build-pie-Desktop-Debug",
 		"source" : "/home/acerisey/ajcPie/pie"
 	},
 	"version" : 

@@ -50,7 +50,7 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/acerisey/build-pie-Desktop-Debug",
+		"build" : "/home/acerisey/ajcPie/build-pie-Desktop-Debug",
 		"source" : "/home/acerisey/ajcPie/pie"
 	},
 	"version" : 

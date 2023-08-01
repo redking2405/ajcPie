@@ -60,7 +60,7 @@ EQUALS = =
 CMAKE_SOURCE_DIR = /home/acerisey/ajcPie/pie
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/acerisey/build-pie-Desktop-Debug
+CMAKE_BINARY_DIR = /home/acerisey/ajcPie/build-pie-Desktop-Debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -132,9 +132,9 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/acerisey/build-pie-Desktop-Debug/CMakeFiles /home/acerisey/build-pie-Desktop-Debug//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/acerisey/ajcPie/build-pie-Desktop-Debug/CMakeFiles /home/acerisey/ajcPie/build-pie-Desktop-Debug//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/acerisey/build-pie-Desktop-Debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/acerisey/ajcPie/build-pie-Desktop-Debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target

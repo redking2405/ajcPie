@@ -1,7 +1,7 @@
-/home/acerisey/build-pie-Desktop-Debug/CMakeFiles/pie.dir
-/home/acerisey/build-pie-Desktop-Debug/CMakeFiles/edit_cache.dir
-/home/acerisey/build-pie-Desktop-Debug/CMakeFiles/rebuild_cache.dir
-/home/acerisey/build-pie-Desktop-Debug/CMakeFiles/list_install_components.dir
-/home/acerisey/build-pie-Desktop-Debug/CMakeFiles/install.dir
-/home/acerisey/build-pie-Desktop-Debug/CMakeFiles/install/local.dir
-/home/acerisey/build-pie-Desktop-Debug/CMakeFiles/install/strip.dir
+/home/acerisey/ajcPie/build-pie-Desktop-Debug/CMakeFiles/pie.dir
+/home/acerisey/ajcPie/build-pie-Desktop-Debug/CMakeFiles/edit_cache.dir
+/home/acerisey/ajcPie/build-pie-Desktop-Debug/CMakeFiles/rebuild_cache.dir
+/home/acerisey/ajcPie/build-pie-Desktop-Debug/CMakeFiles/list_install_components.dir
+/home/acerisey/ajcPie/build-pie-Desktop-Debug/CMakeFiles/install.dir
+/home/acerisey/ajcPie/build-pie-Desktop-Debug/CMakeFiles/install/local.dir
+/home/acerisey/ajcPie/build-pie-Desktop-Debug/CMakeFiles/install/strip.dir

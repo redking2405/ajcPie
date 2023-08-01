@@ -5,56 +5,174 @@
 #include <gdfontg.h>
 #include <string.h>
 
-void MakePie(int p[], int colors[], gdImagePtr im, int center)
+int numArgs;
+typedef struct Datalist Datalist;
+
+struct Datalist{
+    int percent;
+    int index;
+    char* data;
+    Datalist* suivant;
+};
+
+///
+/// \brief Init
+/// \param percent
+/// \param data
+/// \return list of member
+/// set up a list with the percentage and the label for the pie chart
+Datalist* Init(int percent, char* data)
 {
-    int i=0;
-    int startP;
-    int endP;
-    int length = sizeof(p[0]);
-    for(i=0; i<length; i++)
+    Datalist* premier = malloc(sizeof(*premier));
+    premier->percent = percent;
+    premier->index = 0;
+    premier->data = malloc(strlen(data));
+    strcpy(premier->data, data);
+    premier->suivant = NULL;
+    return premier;
+}
+
+///
+/// \brief Add
+/// \param list
+/// \param percent
+/// \param data
+/// add a new member to the list in parameter
+void Add(Datalist* list, int percent, char* data)
+{
+    Datalist* new = malloc(sizeof(*new));
+    Datalist* current=list;
+    int i=list->index;
+    new->data = malloc(sizeof(*data));
+    strcpy(new->data, data);
+    new->percent= percent;
+    while(current->suivant !=NULL)
     {
-        if(i==0)
-            startP=0;
-        endP = startP+(3.6*p[i]);
-        gdImageFilledArc(im, center, center, center, center, startP, endP, colors[i],0);
+        i=current->index;
+        current = current->suivant;
+    }
+    new->index = current->index+1;
+    current->suivant=new;
+}
+
+///
+/// \brief CompileArgument
+/// \param args
+/// \return
+/// Get the arguments passed in the terminal if there isn't enough data prepare a list with a placeholder pie chart
+/// with 25% charts and placeholder labels
+Datalist* CompileArgument(char** args)
+{
+    int i;
+    int size = (numArgs-2)/2;
+    Datalist* list;
+    if((numArgs-2)%2!=0 ||  numArgs<6)
+    {
+        printf("NOT ENOUGH ARGUMENT\n");
+        //return 1;
+        list = Init(25, "Placeholder");
+        Add(list, 25, "placeholder2");
+        Add(list, 25, "placeholder3");
+        Add(list, 25, "placeholder4");
+        return list;
+    }
+    int sum=0;
+    int tempInt;
+    for(i=2; i<size+1; i++)
+    {
+        tempInt = atoi(args[i]);
+        if(i=2)
+            list=Init(tempInt, args[i+size]);
+        else
+            Add(list, tempInt, args[i+size]);
+        sum+=tempInt;
+    }
+
+    if(sum!=100)
+    {
+        printf("THERE IS DATA MISSING");
+    }
+}
+
+///
+/// \brief LastIndex
+/// \param list
+/// \return
+///Get the last item in the list is used to determine how many section the pie chat has
+int LastIndex(Datalist* list)
+{
+    Datalist* current = list;
+    while(current->suivant!=NULL){
+        current= current->suivant;
+    }
+
+    return current->index;
+}
+
+///
+/// \brief GetMember
+/// \param list
+/// \param i
+/// \return
+///get a specific member of the list to draw the pie chart
+Datalist* GetMember(Datalist* list, int i)
+{
+    Datalist* current = list;
+    while(current->suivant!=NULL)
+    {
+        if(current->index==i)
+            return current;
+        current = current->suivant;
+    }
+    return current;
+}
+///
+/// \brief MakePieChart
+/// \param im
+/// \param f
+/// \param data
+/// \param colors
+/// \param center
+/// \param radius
+///Draw the pie chart using the data given by the arguments in the program
+void MakePieChart(gdImagePtr im, gdFontPtr f, Datalist* data, int colors[], int center, int radius)
+{
+    int len = LastIndex(data);
+    Datalist* currentData;
+    int i=0;
+    int startP=0;
+    int endP;
+    for(i=0; i<len+1; i++)
+    {
+        currentData=GetMember(data,i);
+        endP=startP+3.6*currentData->percent;
+        gdImageFilledArc(im, center, center, radius*2, radius*2,startP, endP,colors[i],0);
+        if(endP<=90)
+            gdImageString(im, f, center+radius+strlen(currentData->data) , center,currentData->data,colors[i]);
+        else if(endP>90 && endP<=180)
+            gdImageString(im, f, center , center+radius+strlen(currentData->data),currentData->data,colors[i]);
+        else if(endP>180 && endP<=270)
+            gdImageString(im, f, center-(radius+9*strlen(currentData->data)) , center,currentData->data,colors[i]);
+        else
+            gdImageString(im, f, center+(radius/2) , center-radius,currentData->data,colors[i]);
         startP=endP;
     }
 }
 
-void MakeLegend(gdImagePtr im, gdFontPtr f,char* data, int colors[], int center, int size)
+int main(int argc, char* argv[])
 {
-    char* tempStr = strtok(data, " ");
-    int i=0;
-    while(tempStr!=NULL)
-    {
-        if(i==0)
-            gdImageString(im, f, center+size , center,tempStr,colors[i]);
-        if(i==1)
-            gdImageString(im, f, center , center+size,tempStr,colors[i]);
-        if(i==2)
-            gdImageString(im, f, center-(size+8*strlen(tempStr)) , center,tempStr,colors[i]);
-        if(i==3)
-            gdImageString(im, f, center , center-(size+strlen(tempStr)),tempStr,colors[i]);
-
-        i++;
-        tempStr=strtok(NULL, " ");
-    }
-}
-
-int main()
-{
+    numArgs = argc;
     gdImagePtr im;
     FILE* pngout;
     int sizeX=256;
     int sizeY=256;
-    int center = sizeX/2;
     //colors
     int black;
     int white;
     int red;
     int blue;
     int green;
-
+    char* file = argv[numArgs-1];
     im = gdImageCreate(sizeX, sizeY);
     white = gdImageColorAllocate(im, 255,255,255);
     black = gdImageColorAllocate(im, 0, 0 ,0);
@@ -62,20 +180,24 @@ int main()
     blue = gdImageColorAllocate(im, 0,0,255);
     green = gdImageColorAllocate(im,0,255,0);
     gdFontPtr font;
-    int percents[4] = {10, 25, 35, 30};
+
     int colors[4] = {black, red, blue,green};
-    char country[] = "USA Espagne France Italie";
 
-
-
-
+    Datalist* datas = CompileArgument(argv);
     font = gdFontGetGiant();
-
-    MakePie(percents, colors, im, center);
-    MakeLegend(im, font, country, colors, center, 72);
+    MakePieChart(im, font, datas, colors, sizeX/2, sizeX/4);
+    /*gdImageFilledArc(im, sizeX/2, sizeX/2, sizeX/2, sizeX/2, 0,90,black,0);
+    gdImageFilledArc(im, sizeX/2, sizeX/2, sizeX/2, sizeX/2, 90,180,red,0);
+    gdImageFilledArc(im, sizeX/2, sizeX/2, sizeX/2, sizeX/2, 180,270,blue,0);
+    gdImageFilledArc(im, sizeX/2, sizeX/2, sizeX/2, sizeX/2, 270,360,green,0);
+    gdImageString(im, font, 200, 128,"Nigeria", black);
+    gdImageString(im, font, 128, 200,"Espagne", red);
+    gdImageString(im, font, 2, 128,"France", blue);
+    gdImageString(im, font, 128, 45,"Italie", green);*/
     pngout = fopen("test.png", "wb");
     gdImagePng(im, pngout);
     fclose(pngout);
     gdImageDestroy(im);
+    free(datas);
     return 0;
 }
