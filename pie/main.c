@@ -53,6 +53,7 @@ int main()
     int white;
     int red;
     int blue;
+    int green;
 
     im = gdImageCreate(sizeX, sizeY);
     white = gdImageColorAllocate(im, 255,255,255);
