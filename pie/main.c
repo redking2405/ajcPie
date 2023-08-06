@@ -56,12 +56,28 @@ void Add(Datalist* list, int percent, char* data)
 }
 
 ///
+/// \brief Clear
+/// \param list
+///Clear the list after use
+void Clear(Datalist* list){
+
+
+    while(list!=NULL)
+    {
+        Datalist* aSupprimer = list;
+        free(aSupprimer->data);
+        list = list->suivant;
+        free(aSupprimer);
+
+    }
+}
+///
 /// \brief CompileArgument
 /// \param args
 /// \return
 /// Get the arguments passed in the terminal if there isn't enough data prepare a list with a placeholder pie chart
 /// with 25% charts and placeholder labels
-Datalist* CompileArgument(char** args)
+Datalist* CompileArgument(char** args, char* filename)
 {
     int i;
     int size = (numArgs-2)/2;
@@ -74,6 +90,7 @@ Datalist* CompileArgument(char** args)
         Add(list, 25, "placeholder2");
         Add(list, 25, "placeholder3");
         Add(list, 25, "placeholder4");
+        filename = "test.png";
         return list;
     }
     int sum=0;
@@ -92,6 +109,8 @@ Datalist* CompileArgument(char** args)
     {
         printf("THERE IS DATA MISSING");
     }
+    filename=args[numArgs];
+    return list;
 }
 
 ///
@@ -172,7 +191,7 @@ int main(int argc, char* argv[])
     int red;
     int blue;
     int green;
-    char* file = argv[numArgs-1];
+    char* file = malloc(100);
     im = gdImageCreate(sizeX, sizeY);
     white = gdImageColorAllocate(im, 255,255,255);
     black = gdImageColorAllocate(im, 0, 0 ,0);
@@ -183,7 +202,7 @@ int main(int argc, char* argv[])
 
     int colors[4] = {black, red, blue,green};
 
-    Datalist* datas = CompileArgument(argv);
+    Datalist* datas = CompileArgument(argv, &file);
     font = gdFontGetGiant();
     MakePieChart(im, font, datas, colors, sizeX/2, sizeX/4);
     /*gdImageFilledArc(im, sizeX/2, sizeX/2, sizeX/2, sizeX/2, 0,90,black,0);
@@ -194,10 +213,11 @@ int main(int argc, char* argv[])
     gdImageString(im, font, 128, 200,"Espagne", red);
     gdImageString(im, font, 2, 128,"France", blue);
     gdImageString(im, font, 128, 45,"Italie", green);*/
-    pngout = fopen("test.png", "wb");
+    pngout = fopen(file, "wb");
     gdImagePng(im, pngout);
     fclose(pngout);
+    free(file);
     gdImageDestroy(im);
-    free(datas);
+    Clear(datas);
     return 0;
 }
